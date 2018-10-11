@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DogService } from '../service/dog.service';
 
 @Component({
   selector: 'app-body',
@@ -7,11 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BodyComponent implements OnInit {
 
-  firstDog = 'https://images.dog.ceo/breeds/hound-basset/n02088238_12160.jpg';
+  firstDog = '';
 
-  constructor() { }
+  constructor(private dogService: DogService) { }
 
   ngOnInit() {
+    this.getDog();
   }
+
+  getDog() {
+    return this.dogService.getRandomDog().subscribe(
+      (dog) => {
+        this.firstDog = dog.message;
+      }
+    );
+  }
+
 
 }

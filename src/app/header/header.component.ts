@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DogService } from '../service/dog.service';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   companyName = `Dog's Company`;
+  firstDog = '';
 
-  constructor() { }
+  constructor(private dogService: DogService) { }
 
   ngOnInit() {
+  }
+
+  getRandomDog() {
+    return this.dogService.getRandomDog().subscribe(
+      (dog) => {
+        this.firstDog = dog.message;
+        console.log('this.firstDog: ', this.firstDog);
+      }
+    );
   }
 
 
