@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DogService } from '../service/dog.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { DogService } from '../service/dog.service';
 })
 export class BodyComponent implements OnInit {
 
-  firstDog = '';
+  @Input() urlImgDog: string;
 
   constructor(private dogService: DogService) { }
 
@@ -18,8 +18,8 @@ export class BodyComponent implements OnInit {
 
   getDog() {
     return this.dogService.getRandomDog().subscribe(
-      (dog) => {
-        this.firstDog = dog.message;
+      (dog: any) => {
+        this.urlImgDog = dog.message;
       }
     );
   }
