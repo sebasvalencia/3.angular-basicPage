@@ -1,18 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand">
     <img src="/../assets/dog-face.png" width="30" height="30" class="d-inline-block align-top" alt="">
     {{companyName}}
   </a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <button class="btn btn-outline-success" (click)="getRandomDog()">Random Dog</button>
+        <button 
+        class="btn btn-outline-success" 
+        (click)="getRandomDog()">Random Dog</button>
       </li>
     </ul>
   </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { DogService } from '../service/dog.service';
 
 @Component({
@@ -9,21 +9,18 @@ import { DogService } from '../service/dog.service';
 export class HeaderComponent implements OnInit {
 
   companyName = `Dog's Company`;
-  firstDog = '';
+  @Output() passUrlDog: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private dogService: DogService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   getRandomDog() {
     return this.dogService.getRandomDog().subscribe(
-      (dog) => {
-        this.firstDog = dog.message;
-        console.log('this.firstDog: ', this.firstDog);
+      (dog: any) => {
+        this.passUrlDog.emit(dog.message);
       }
     );
   }
-
 
 }
